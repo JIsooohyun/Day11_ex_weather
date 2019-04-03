@@ -1,6 +1,7 @@
 package com.soohyun.weather;
 
 public class Weather {
+	//데이터 정보를 저장하는  class
 	private String city;  //도시명
 	private String state; //상태
 	private int gion;     //기온

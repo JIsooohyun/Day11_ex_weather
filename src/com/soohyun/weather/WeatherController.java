@@ -24,7 +24,7 @@ public class WeatherController {
 			System.out.println("2. 날씨      검색");
 			System.out.println("3. 날씨      삭제");
 			System.out.println("4. 날씨정보출력");
-			System.out.println("5. 종            료");
+			System.out.println("5. 종           료");
 			int select = sc.nextInt();
 			if(select == 1) {
 				//setWeahter호출 한 결과물을 weathers에 추가

@@ -17,7 +17,8 @@ public class WeatherInint {
 	public ArrayList<Weather> getWeathers(){  //info문자열을 잘라서 ArryList에 넣기
 		
 		ArrayList<Weather> ar = new ArrayList<Weather>();
-		info = info.replace(" ", "");
+		//info = info.replace(" ", "");//만약에 in cheon으로 쓰면 공백이 없어지기 때문에 차라리
+		info = info.trim();  //공백을 없애는 방법을 사용한다.
 		String [] s = info.split(",");
 		
 		
@@ -76,13 +77,7 @@ public class WeatherInint {
 		
 		for(int i=0; i<ar.size(); i++) {
 			if(ar.get(i).getState().equals(nal)) {
-				ar.get(i).getCity();
-				/*
-				ar.remove(i).getCity();
-				ar.remove(i).getState();
-				ar.remove(i).getGion();
-				ar.remove(i).getHum();
-				ar.remove(i).getMise();*/
+				ar.remove(i);
 			}
 		}
 		
