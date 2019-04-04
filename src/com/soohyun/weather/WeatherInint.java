@@ -2,6 +2,7 @@ package com.soohyun.weather;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import java.util.StringTokenizer;
 
 public class WeatherInint {
 
@@ -19,18 +20,18 @@ public class WeatherInint {
 		ArrayList<Weather> ar = new ArrayList<Weather>();
 		//info = info.replace(" ", "");//만약에 in cheon으로 쓰면 공백이 없어지기 때문에 차라리
 		//trim();  //공백을 없애는 방법을 사용한다.
-		String [] s = info.split(",");
+		//String [] s = info.split(",");
 
-
-		for(int i=0; i<s.length; i++) {
-			Weather weather = new Weather(); 
-			weather.setCity(s[i].trim());
-			weather.setState(s[++i].trim());
-			weather.setGion(Integer.valueOf(s[++i].trim()));
-			weather.setHum(Integer.valueOf(s[++i].trim()));
-			weather.setMise(Double.valueOf(s[++i].trim()));
-			ar.add(weather);
+		StringTokenizer st = new StringTokenizer(info);
+		while(st.hasMoreTokens()) {
+			Weather weather = new Weather();
+			weather.setCity(st.nextToken().trim());
+			weather.setState(st.nextToken().trim());
+			weather.setGion(Integer.parseInt(st.nextToken().trim()));
+			weather.setHum(Integer.parseInt(st.nextToken().trim()));
+			weather.setMise(Double.parseDouble(st.nextToken().trim()));
 		}
+		
 		return ar;
 	}
 
