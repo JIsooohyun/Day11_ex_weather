@@ -4,10 +4,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class WeatherInint {
-	
+
 	private String info;
 	private Scanner sc;
-	
+
 	//도시명, 상태, 기온, 습도, 미세먼지
 	public WeatherInint() {
 		info = "seoul , 맑음 , 10 , 20 , 0.3 , daejon , 비 , -22 , 50 , 0.1,"
@@ -15,26 +15,26 @@ public class WeatherInint {
 		sc = new Scanner(System.in);
 	}
 	public ArrayList<Weather> getWeathers(){  //info문자열을 잘라서 ArryList에 넣기
-		
+
 		ArrayList<Weather> ar = new ArrayList<Weather>();
 		//info = info.replace(" ", "");//만약에 in cheon으로 쓰면 공백이 없어지기 때문에 차라리
-		info = info.trim();  //공백을 없애는 방법을 사용한다.
+		//trim();  //공백을 없애는 방법을 사용한다.
 		String [] s = info.split(",");
-		
-		
+
+
 		for(int i=0; i<s.length; i++) {
-			 Weather weather = new Weather(); 
-			 weather.setCity(s[i]);
-			 weather.setState(s[++i]);
-			 weather.setGion(Integer.valueOf(s[++i]));
-			 weather.setHum(Integer.valueOf(s[++i]));
-			 weather.setMise(Double.valueOf(s[++i]));
-			 ar.add(weather);
+			Weather weather = new Weather(); 
+			weather.setCity(s[i].trim());
+			weather.setState(s[++i].trim());
+			weather.setGion(Integer.valueOf(s[++i].trim()));
+			weather.setHum(Integer.valueOf(s[++i].trim()));
+			weather.setMise(Double.valueOf(s[++i].trim()));
+			ar.add(weather);
 		}
 		return ar;
 	}
-	
-	
+
+
 	public Weather setWeather() {
 		Weather we = new Weather();
 		System.out.println("City를 입력하세요");
@@ -49,41 +49,47 @@ public class WeatherInint {
 		we.setMise(sc.nextDouble());
 		return we;
 	}
-	
+
 	public Weather findWeather(ArrayList<Weather> ar) {
-		Weather we = new Weather();
-		System.out.println("날씨를 입력하세요");
-		String nal = sc.next();
-		
+		Weather we = null;
+		System.out.println("도시명을 입력하세요");
+		String city = sc.next();
+
 		for(int i=0; i<ar.size(); i++) {
-			if(ar.get(i).getState().equals(nal)) {
+			if(ar.get(i).getCity().equals(city)) {
 				we = new Weather();
-				we.setCity(ar.get(i).getCity());
-				we.setState(ar.get(i).getState());
-				we.setGion(ar.get(i).getGion());
-				we.setHum(ar.get(i).getHum());
-				we.setMise(ar.get(i).getMise());
-				
+				we = ar.get(i);
+				//we.setCity(ar.get(i).getCity());
+				//we.setState(ar.get(i).getState());
+				//we.setGion(ar.get(i).getGion());
+				//we.setHum(ar.get(i).getHum());
+				//we.setMise(ar.get(i).getMise());
+				break;
 			}
 		}
+		
 		return we;
 	}
 
-	public void deleteWeather(ArrayList<Weather> ar) {
+	public String deleteWeather(ArrayList<Weather> ar) {
 		Weather we = new Weather();
-		System.out.println("날씨를 입력하세요");
-		String nal = sc.next();
-		
-		
+		System.out.println("도시명을 입력하세요");
+		String city = sc.next();
+		String result = "없는 도시명";
+
+
 		for(int i=0; i<ar.size(); i++) {
-			if(ar.get(i).getState().equals(nal)) {
+			if(ar.get(i).getCity().equals(city)) {
 				ar.remove(i);
+				result = "삭제가 완료";
+				break;
 			}
 		}
-		
+		return result;
+
 	}
-	
-	
+
+
 }
 
 
