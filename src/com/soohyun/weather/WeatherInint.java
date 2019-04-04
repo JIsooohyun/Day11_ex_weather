@@ -49,6 +49,7 @@ public class WeatherInint {
 		we.setHum(sc.nextInt());
 		System.out.println("Mise를 입력하세요");
 		we.setMise(sc.nextDouble());
+		
 		return we;
 	}
 
