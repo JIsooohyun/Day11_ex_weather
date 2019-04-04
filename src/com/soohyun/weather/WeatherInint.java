@@ -30,6 +30,7 @@ public class WeatherInint {
 			weather.setGion(Integer.parseInt(st.nextToken().trim()));
 			weather.setHum(Integer.parseInt(st.nextToken().trim()));
 			weather.setMise(Double.parseDouble(st.nextToken().trim()));
+			ar.add(weather);
 		}
 		
 		return ar;
